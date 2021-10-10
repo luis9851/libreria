@@ -1,0 +1,68 @@
+<!-- <img src="https://acegif.com/wp-content/gifs/book-22.gif" class="borde"/>
+<a href="" class="nav-link" [routerLink]="['home']">Librería</a> -->
+
+<mat-toolbar class="tool" #tool>
+    <div *ngIf="!this.search">Libreria</div>
+    <div *ngIf="this.state">
+        <a href="" [routerLink]="['/home']"><img src="https://acegif.com/wp-content/gifs/book-22.gif" class="borde" /> 
+                <div style="position: absolute;left: 70px; top: 20px;">
+                    <h3 *ngIf="title" class="hover1">Librería</h3>
+                    <h3 *ngIf="!title"class="hover2">Librería</h3>
+                </div>
+        </a>
+    </div>
+
+    <div class="search" *ngIf="this.search">
+        <input class="InputSearch" [(ngModel)]="find" (keyup.enter)="onEnter()" placeholder="Busca un libro...">
+    </div>
+    <div class="iconSearch" (click)="showBar()">
+        <mat-icon>search</mat-icon>
+    </div>
+    <button style="position: absolute; right: 20px" mat-icon-button *ngIf="sidenav.mode === 'over'"
+        (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+
+    </button>
+
+</mat-toolbar>
+
+
+<mat-sidenav class="sidenav" #sidenav="matSidenav">
+
+    <div class="content">
+        <button mat-button [routerLink]="['/home']" class="menu-button"
+            style="position: absolute; top: 20%; width: 90%">
+            <mat-icon>home</mat-icon>
+            <span>Inicio</span>
+        </button>
+        <button [routerLink]="['/perfil']" mat-button class="menu-button"
+            style="position: absolute; top: 30%; width: 90%">
+            <mat-icon>account_circle</mat-icon>
+            <span> Perfil</span>
+        </button>
+        <button [routerLink]="['/upload']" mat-button class="menu-button"
+            style="position: absolute; top: 40%; width: 90%" *ngIf="admin">
+            <mat-icon>book</mat-icon>
+            <span> Subir libro</span>
+        </button>
+
+        <button mat-button class="menu-button" style="position: absolute; top: 50%; width: 90%">
+            Modo oscuro:
+            <mat-slide-toggle [checked]="useDefault" (change)="toggle($event)"
+                style="right: 0; position: absolute; margin-right: 5%;"></mat-slide-toggle>
+        </button>
+        <button (click)="close_sesion()" mat-button class="menu-button"
+            style="position: absolute; top: 60%; width: 90%">
+            <mat-icon>exit_to_app</mat-icon>
+            <span> Cerrar sesión</span>
+        </button>
+    </div>
+
+
+
+</mat-sidenav>

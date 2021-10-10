@@ -1,0 +1,160 @@
+mat-toolbar{
+    background: #000;
+    color: white;
+    position: fixed;
+    z-index: 99;
+}
+
+mat-sidenav{
+  
+    width: 30%;
+    border-right: none;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    z-index: 2;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7)
+    
+}
+
+mat-sidenav-container{
+    height: calc(100vh - 65px);
+    background-color: #989089;
+    display: none;
+    position: absolute;
+    z-index: 100;
+}
+
+.content{
+    height: calc(100vh - 98px);
+    margin: 16px;
+    margin-left: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: lightgray;   
+}
+
+.menu-button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+        
+}
+
+.menu-button:hover{
+    color: pink;
+}
+
+
+.hover1{
+    color: white;
+    background-color: transparent !important;
+
+}
+.hover2{
+    color: black;
+    background-color: transparent !important;
+
+}
+.hover1:hover{
+    color: pink;
+}
+.hover2:hover{
+    color: pink;
+}
+
+mat-icon {
+    margin-right: 8px;
+}
+
+
+.search{
+    position: absolute;
+    width: 30%;
+    background-color: #fff;
+    display: block;
+    height: 50%;
+    left: 45%;
+    border-radius: 10px;
+}
+
+.InputSearch{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.iconSearch{
+    position: absolute;
+    left: 77%; 
+    margin: 0; 
+    top: 30%;
+}
+
+
+@media (max-width: 600px){
+    mat-sidenav{
+  
+        width: 80%;
+        border-right: none;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.7);
+        text-align: center;
+        position: fixed;
+        z-index: 1;
+        height: 100%;
+        
+    }
+
+    
+.search{
+    position: absolute;
+    width: 50%;
+    background-color: transparent;
+    height: 40%;
+    left: 20%;
+    top: 23%;
+    animation-name: show;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+}
+.iconSearch{
+    position: absolute;
+    left: 75%; 
+    margin: 0; 
+    top: 30%;
+    cursor: pointer;
+}
+
+
+.InputSearch{
+    width: 100%;
+    height: 100%;
+    
+}
+
+@keyframes show {
+    from{
+        width:0%;
+    }
+    to{
+        width: 50%;
+    }
+}
+}
+
+.borde{
+    width:50px;
+    height:40px;
+    border-radius: 0px 115px 59px 59px;
+-moz-border-radius: 0px 115px 59px 59px;
+-webkit-border-radius: 0px 115px 59px 59px;
+    text-decoration: none;
+}
+
+

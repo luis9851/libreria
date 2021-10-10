@@ -1,0 +1,49 @@
+<!-- <h1 class="animated fadeIn" style="text-align: center;color: black;">{{ libro.Titulo | uppercase }} <small>({{ libro.Autor }})</small></h1>
+<hr> -->
+<app-nav-bar ></app-nav-bar>  
+<div class="content" style="margin-top: 56px; position: absolute;width: 100%;">
+    <div class="row animated fadeIn fast fondo_libro">
+        <div class="col-md-4">
+            <img [src]="libro.RutaDeImagen" class="img-fluid" [alt]="libro.Titulo">
+            <br><br>
+            <a [routerLink] = "['/home']" class="btn btn-outline-danger btn-block">Regresar</a>
+
+        </div>
+    
+        <div class="col-md-8">
+            <h2 class="animated fadeIn" style="text-align: center;color: black;">{{ libro.Titulo }}</h2>
+            <hr>
+            <p><img width="50px" height="50px" src="https://www.gandhi.com.mx/media/wysiwyg/imagenes/detalles/numero_de_paginas.png"> Editorial: {{ libro.Editorial }}</p>
+            <p><img width="50px" height="50px" src="https://www.gandhi.com.mx/media/wysiwyg/imagenes/detalles/edicion.png"> Autor(a): {{ libro.Autor }}</p>
+            <p><img width="50px" height="50px" src="https://www.gandhi.com.mx/media/wysiwyg/imagenes/detalles/sku.png"> Clave ISBN: {{ libro.Clave }}</p>
+            <p><img width="50px" height="50px" src="https://icon-icons.com/icons2/906/PNG/48/invoice_icon-icons.com_70095.png"> Precio: {{ libro.Precio }}</p>
+            <p><img width="50px" height="50px" src="https://www.gandhi.com.mx/media/wysiwyg/imagenes/detalles/formato.png"> Unidades disponible: {{ libro.UnidadesDisponibles }}</p>
+    
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="offset-md-10 col-md-1" *ngIf="this._LibrosService.getAdmin()">
+                    <button id="btnEditar" type="button" class="btn btn-warning" (click)="Edit()">Modificar</button>
+                </div>
+                <div class="col-md-1" *ngIf="this._LibrosService.getAdmin()">
+                    <button id="btnEliminar" type="button" class="btn btn-danger" data-toggle="modal" data-target="#messageModal">Eliminar</button>
+                </div>
+                <div *ngIf="libro.UnidadesDisponibles">
+                    <div class="col" *ngIf="!this._LibrosService.getAdmin()">
+                        <button id="btnEliminar" type="button" class="btn btn-primary btn-lg btn-block" (click)="Prestamo()">Solicitar préstamo</button>
+                    </div>
+                </div>
+                <div *ngIf="!libro.UnidadesDisponibles">
+                    <div class="offset-md-10 col-md-1">
+                        <img src="https://drive.google.com/file/d/13Vz3L_jcZynNKR_EtwySkrD2Fnwtn4zz/view?usp=sharing" alt="">
+                    </div>
+                </div>
+                <!-- <div class="offset-md-10 col-md-1" *ngIf="!this._LibrosService.getAdmin()">
+                    <button id="btnEliminar" type="button" class="btn btn-primary" (click)="Prestamo()">Solicitar préstamo</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <app-message *ngIf="!ismodelShown" (onConfirm)="cerrarModal($event)"></app-message>
+    
+</div>

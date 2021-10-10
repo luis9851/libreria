@@ -1,0 +1,102 @@
+<app-nav-bar></app-nav-bar>
+    <div class="content square" style="margin-top: 56px; position: absolute;width: 100%;">
+        <div class="row animated fadeIn fast fondo_libro">
+            <div class="col-md-4">
+                <div class="content-mat-icon">
+                    <mat-icon aria-hidden="false" aria-label="Example edit icon">edit</mat-icon>
+                    </div>
+                <img src="assets/images/perf1.jpg" alt="" class="imgRedonda" >
+                <br><br>
+                <a [routerLink] = "['/home']" class="btn btn-outline-danger btn-block">Regresar</a>
+        
+            </div>
+        
+            <div class="col-md-8">
+                <h2 class="animated fadeIn" style="text-align: center;color: black;">{{users.FirstName}} {{users.LastName}}</h2>
+                <hr>
+        
+                <h4><mat-icon aria-hidden="false" aria-label="Example email icon">email</mat-icon> {{users.email}}</h4>
+                <h4><mat-icon aria-hidden="false" aria-label="Example phone icon">phone</mat-icon> {{users.Telefono}}</h4>
+                <div class="editar">
+                    <mat-icon aria-hidden="false" aria-label="Example edit icon" (click)="opened()" >edit</mat-icon>
+                    <br><br>
+                    <mat-icon aria-hidden="false" aria-label="Example edit icon" (click)="open()">edit</mat-icon>
+                </div>
+                <hr>
+                <h2 *ngIf="!this._Service.getAdmin()">Mis prestamos</h2>
+                <h2 *ngIf="this._Service.getAdmin()">Gestión</h2>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th *ngIf="this._Service.getAdmin()" style="font-size: 15px;">Cliente</th>
+                            <th style="font-size: 15px;">Título</th>
+                            <th style="font-size: 15px;">Fecha de inicio</th>
+                            <th style="font-size: 15px;">Fecha de fin</th>
+                            <th style="font-size: 15px;">Estado del prestamo</th>
+                            <th *ngIf="this._Service.getAdmin()" style="font-size: 15px;">Finalizado</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let item of libros">
+                        <tr *ngIf="item.Status">
+                            <td *ngIf="this._Service.getAdmin()">{{ item.Usuario }}</td>
+                            <td>{{ item.Titulo }}</td>
+                            <td>{{ item.Fecha_inicio }}</td>
+                            <td>{{ item.Fecha_fin }}</td>
+                            <td *ngIf="item.Status">No entregado</td>
+                            <td *ngIf="!item.Status">Entregado</td>
+                            <td *ngIf="this._Service.getAdmin()"><button id="btnEliminar" (click)="eliminar(item.Clave)" type="button" class="btn" style="background-color: #faad8f;" data-toggle="modal" data-target="#messageModal">Eliminar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<div *ngIf="show">
+        <div class="edit">
+            <mat-icon aria-hidden="false" aria-label="Example edit icon" (click)="close()">close</mat-icon>
+                <br>
+                <h3>Telefono</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" id="Editar" type="submit" (click)="confirmar(Telefono.value);close()">Guardar</button>
+                    </div>
+                    <input class="form-control" type="text"  #Telefono maxlength="10"  style="font-size: small;color: black;"/>
+                </div>
+               <!--  <div>
+                    <label style="font-size: small;">Telefono</label>
+                    <input class="form-control" type="text" #Telefono maxlength="10"  style="font-size: small;color: black;"/>
+                </div>
+    
+            <div style="margin-top: 2%;">
+                <button class="btn btn-light" id="Editar" type="submit" (click)="confirmar(Telefono.value);close()">Guardar</button>
+            </div> -->
+        </div>
+    </div>
+    
+    <div *ngIf="see">
+        <div class="edit">
+            <mat-icon aria-hidden="false" aria-label="Example edit icon" (click)="closed()">close</mat-icon>
+    
+                <!-- <div>
+                    <label style="font-size: small;">Correo electronico</label>
+                    <input class="form-control" type="text" #email  style="font-size: small;color: black;"/>
+                </div> -->
+                <br>
+                <h3>Correo electronico</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" id="Editar" type="submit" (click)="correo(email.value);closed()">Guardar</button>
+                    </div>
+                    <input class="form-control" type="text" #email  style="font-size: small;color: black;"/>
+                </div>
+
+            <!-- <div style="margin-top: 2%;">
+                <button class="btn btn-light" id="Editar" type="submit" (click)="correo(email.value);closed()">Guardar</button>
+            </div> -->
+        </div>
+    </div>
+    <app-message *ngIf="!ismodelShown" (onConfirm)="cerrarModal($event)"></app-message>
+
+  
+    

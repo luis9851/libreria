@@ -1,0 +1,23 @@
+body {
+    background-image: url('https://images5.alphacoders.com/919/thumb-1920-919004.jpg');background-repeat: no-repeat; background-size: cover;
+}
+.jumbotron {
+    margin-bottom: 20px;
+    background-image: url('https://acegif.com/wp-content/gifs/book-64.gif');
+    width: 64%;
+    height: 100%;
+    color: white;
+
+
+    
+        border-radius: 0px 115px 59px 59px;
+        -moz-border-radius: 0px 115px 59px 59px;
+        -webkit-border-radius: 0px 115px 59px 59px;
+        border: 0px solid #000000;
+}
+
+
+.Librería{
+ font-size: 3.5rem;
+ color: white;
+}

@@ -1,0 +1,131 @@
+<div class="content fondo_User" style="position: absolute;width: 100%; height: auto;">
+    <main>
+		<form class="formulario" [formGroup]="RegistroFormGrup" (ngSubmit)="AddUser(RegistroFormGrup)">
+			<div class="formulario__grupo" id="grupo__usuario">
+				<label for="FirstName" class="formulario__label">Nombre</label>
+				<div class="formulario__grupo-input">
+					<!-- <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="john123"> -->
+                    <input type="text" formControlName="FirstName" class="formulario__input" placeholder="Escribir nombre">
+				</div>
+				<div class="alert alert-danger" *ngIf="form.FirstName.invalid && (form.FirstName.dirty || form.FirstName.touched)">
+					<div class="container-error-message" *ngIf="form.FirstName.errors?.required">
+						El campo "Usuario" de usuario es requerido
+					</div>
+					<div class="container-error-message" *ngIf="form.FirstName.errors?.minlength">
+						El Nombre debe tener al menos 3 caracteres
+					</div>
+					<div class="container-error-message" *ngIf="(form.FirstName.dirty || form.FirstName.touched) && form.FirstName.invalid && form.FirstName.errors?.pattern">
+						No se aceptan caractares especiales en el campo "Nombre"
+					</div>
+				</div>
+			</div>
+
+			<div class="formulario__grupo">
+				<label for="LastName" class="formulario__label">Apellido</label>
+				<div class="formulario__grupo-input">
+					<input type="text" formControlName="LastName" class="formulario__input" placeholder="Escribir apellido">
+				</div>
+				<div class="alert alert-danger" *ngIf="form.LastName.invalid && (form.LastName.dirty || form.LastName.touched)">
+					<div class="container-error-message" *ngIf="form.LastName.errors?.required">
+						El campo nombre es requerido
+					</div>
+					<div class="container-error-message" *ngIf="form.LastName.errors?.minlength">
+						El Apellido debe tener al menos 3 caracteres
+					</div>
+					<div class="container-error-message" *ngIf="(form.LastName.dirty || form.LastName.touched) && form.LastName.invalid && form.LastName.errors?.pattern">
+						No se aceptan caractares especiales en el campo "Apellido"
+					</div>
+				</div>
+			</div>
+
+			<div class="formulario__grupo">
+				<label for="password" class="formulario__label">Contraseña</label>
+				<div class="formulario__grupo-input">
+					<input maxlength="16" type="password" class="formulario__input" formControlName="password" placeholder="Contraseña">
+				</div>
+				<div class="alert alert-danger" *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)">
+					<div class="container-error-message" *ngIf="form.password.errors?.required">
+						El campo "Contraseña" es requerido
+					</div>
+					<!-- <div class="container-error-message" *ngIf="form.password.errors?.minlength">
+						La contraseña debe tener al menos 8 caracteres
+					</div> -->
+					<div class="container-error-message" *ngIf="(form.password.dirty || form.password.touched) && form.password.invalid && form.password.errors?.pattern">
+						Mínimo ocho caracteres, al menos una letra y un número.
+					</div>
+					<!-- <div class="container-error-message" *ngIf="form.password.errors?.maxlength">
+						La contraseña debe tener 16 caracteres maximos
+					</div> -->
+				</div>
+			</div>
+
+			<div class="formulario__grupo">
+				<label for="Address" class="formulario__label">Dirección</label>
+				<div class="formulario__grupo-input">
+					<input maxlength="50" type="text" class="formulario__input" formControlName="Address" placeholder="Escribir dirección">
+				</div>
+				<div class="alert alert-danger" *ngIf="form.Address.invalid && (form.Address.dirty || form.Address.touched)">
+					<div class="container-error-message" *ngIf="form.Address.errors?.required">
+						El campo "Dirección" es requerido
+					</div>
+					<div class="container-error-message" *ngIf="form.Address.errors?.minlength">
+						La dirección debe tener al menos 8 caracteres
+					</div>
+					<div class="container-error-message" *ngIf="(form.Address.dirty || form.Address.touched) && form.Address.invalid && form.Address.errors?.pattern">
+						El campo "Direccion" es incorrecto
+					</div>
+					<!-- <div class="container-error-message" *ngIf="form.Address.errors?.maxlength">
+						La contraseña debe tener 16 caracteres maximos
+					</div> -->
+				</div>
+			</div>
+
+			<div class="formulario__grupo">
+				<label for="correo" class="formulario__label">Email</label>
+				<div class="formulario__grupo-input">
+					<input type="email" class="formulario__input" formControlName="email" placeholder="correo@correo.com">
+				</div>
+				<div class="alert alert-danger" *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)">
+					<div class="container-error-message" *ngIf="form.email.errors?.required">
+						El campo "Email" es requerido
+					</div>
+					<div class="container-error-message" *ngIf="(form.email.dirty || form.email.touched) && form.email.invalid && form.email.errors?.pattern">
+						el valor tiene que ser una dirección válida
+					</div>
+				</div>
+			</div>
+
+			<div class="formulario__grupo" id="grupo__telefono">
+				<label for="Telefono" class="formulario__label">Teléfono</label>
+				<div class="formulario__grupo-input">
+					<input maxlength="10" type="text" class="formulario__input" formControlName="Telefono" placeholder="4491234567">
+				</div>
+				<div class="alert alert-danger" *ngIf="form.Telefono.invalid && (form.Telefono.dirty || form.Telefono.touched)">
+					<div class="container-error-message" *ngIf="form.Telefono.errors?.required">
+						El campo "Teléfono" es requerido
+					</div>
+					<!-- <div class="container-error-message" *ngIf="form.Telefono.errors?.minlength">
+						Numero de telefono invalido
+					</div> -->
+					<div class="container-error-message" *ngIf="(form.Telefono.dirty || form.Telefono.touched) && form.Telefono.invalid && form.Telefono.errors?.pattern">
+						Numero de telefono invalido
+					</div>
+				</div>
+			</div>
+
+            <div class="formulario__grupo">
+                <div class="formulario__grupo-btn-regresar">
+                    <button (click)="regresar()" type="button" class="formulario__btn">Regresar</button>
+                </div>
+			</div>
+
+            <div class="formulario__grupo">
+                <div class="formulario__grupo formulario__grupo-btn-enviar">
+                    <button type="submit" class="formulario__btn" [disabled]="!RegistroFormGrup.valid">Enviar</button>
+                </div>
+			</div>
+
+		</form>
+	</main>
+
+</div>

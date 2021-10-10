@@ -1,0 +1,111 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+
+h1{
+    color: blue;
+    font-size: 60px;
+}
+
+.nombre{
+    text-align: center;
+    margin: 1px solid #000;
+    animation-name: a;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fondo{
+    background-image: url(assets/images/fondo.jpg);
+    width: 100%;  
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+  
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+ }
+ .fondo::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.603);
+  }
+
+  .fondo_libro{
+    background-image: url(assets/images/fondo.jpg);
+    width: 100%;  
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+  
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+  }
+  .fondo_libro::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.603);
+  }
+  .fondo_User{
+    background-image: url(assets/images/fondo.jpg);
+    width: 100%;  
+    /* margin-top: 56px; */
+    min-height: 100vh;
+    display: -webkit-box;
+    /* display: -webkit-flex; */
+    display: -moz-box;
+    display: -ms-flexbox;
+    /* display: flex; */
+    flex-wrap: wrap;
+    padding: 15px;
+  
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+  }
+  .fondo_User::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.603);
+  }
+  .row{
+    margin-left: 0 !important;
+  }

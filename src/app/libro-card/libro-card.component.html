@@ -1,0 +1,11 @@
+<div *ngIf="libro.activo"  class="card animated fadeIn fast">
+    <img class="card-img-top img-fluid" [src] = "libro.RutaDeImagen" [alt]="libro.Titulo" style="height: 350px">
+    <div class="card-body">
+        <h4 class="card-title">{{ this.limitador(libro.Titulo) }}</h4>
+        <p class="card-text">Autor(a): {{ libro.Autor }}</p>
+        <p class="card-text"><small class="text-muted">Editorial: {{ libro.Editorial }}</small></p>
+        <button (click) = "verLibro()" type="button" class="btn btn-outline-primary btn-block">
+            Ver más...
+        </button>
+    </div>
+</div>

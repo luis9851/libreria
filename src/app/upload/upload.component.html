@@ -1,0 +1,143 @@
+<div class="message" *ngIf="this.load">
+  <div class="loading loading--full-height"></div>
+  <div class="id_message">Guardando...</div>
+</div>
+<div class="img">
+    <div id="img"  class="imgC" [ngStyle]="{'background-image': 'url(' + uploadURL +')'}">
+
+    </div>
+</div>
+<div class="prog" *ngIf="prog">
+
+  <div class="up">
+    <h1>Subiendo imagen...</h1>
+  </div>
+  <div class="down">
+
+    <div class="bar">
+      <div class="barprog"  [ngStyle]="{width: num}"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="contenedor">
+    <div class="contenedor_formulario">
+      <main>
+        <form class="formulario" [formGroup]="RegistroFormGrup" (ngSubmit)="AddBook(RegistroFormGrup)">
+          <div class="formulario__grupo" id="grupo__usuario">
+            <label for="FirstName" class="formulario__label">Titulo del libro</label>
+            <div class="formulario__grupo-input">
+              <!-- <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="john123"> -->
+                        <input type="text" formControlName="title" class="formulario__input" placeholder="Escribir Titulo">
+            </div>
+            <div class="alert alert-danger" *ngIf="form.title.invalid && (form.title.dirty || form.title.touched)">
+              <div class="container-error-message" *ngIf="form.title.errors?.required">
+                El campo titulo es requerido
+              </div>
+              <div class="container-error-message" *ngIf="form.title.errors?.minlength">
+                El titulo debe tener al menos 5 caracteres
+              </div>
+            </div>
+          </div>
+    
+          <div class="formulario__grupo">
+            <label for="LastName" class="formulario__label">Editorial</label>
+            <div class="formulario__grupo-input">
+              <input type="text" formControlName="Editorial" class="formulario__input" placeholder="Escribir Editorial">
+            </div>
+            <div class="alert alert-danger" *ngIf="form.Editorial.invalid && (form.Editorial.dirty || form.Editorial.touched)">
+              <div class="container-error-message" *ngIf="form.Editorial.errors?.required">
+                El campo Editorial es requerido
+              </div>
+              <div class="container-error-message" *ngIf="form.Editorial.errors?.minlength">
+                El Editorial debe tener al menos 5 caracteres
+              </div>
+            </div>
+          </div>
+    
+          <div class="formulario__grupo">
+            <label for="LastName" class="formulario__label">Autor</label>
+            <div class="formulario__grupo-input">
+              <input type="text" formControlName="Autor" class="formulario__input" placeholder="Escribir Autor">
+            </div>
+            <div class="alert alert-danger" *ngIf="form.Autor.invalid && (form.Autor.dirty || form.Autor.touched)">
+              <div class="container-error-message" *ngIf="form.Autor.errors?.required">
+                El campo Editorial es requerido
+              </div>
+              <div class="container-error-message" *ngIf="form.Autor.errors?.minlength">
+                El Editorial debe tener al menos 5 caracteres
+              </div>
+            </div>
+          </div>
+    
+          <div class="formulario__grupo">
+            <label for="Address" class="formulario__label">Clave</label>
+            <div class="formulario__grupo-input">
+              <input maxlength="50" type="text" class="formulario__input" formControlName="Clave" placeholder="Escribir Clave">
+            </div>
+            <div class="alert alert-danger" *ngIf="form.Clave.invalid && (form.Clave.dirty || form.Clave.touched)">
+              <div class="container-error-message" *ngIf="form.Clave.errors?.required">
+                El campo "Clave" es requerido
+              </div>
+              <div class="container-error-message" *ngIf="form.Clave.errors?.minlength">
+                La Clave debe tener al menos 8 caracteres
+              </div>
+              <!-- <div class="container-error-message" *ngIf="form.Address.errors?.maxlength">
+                La contraseña debe tener 16 caracteres maximos
+              </div> -->
+            </div>
+          </div>
+    
+          <div class="formulario__grupo">
+            <label for="Address" class="formulario__label">Precio</label>
+            <div class="formulario__grupo-input">
+              <input type="number" class="formulario__input" formControlName="Precio" placeholder="Precio">
+            </div>
+            
+          </div>
+
+          <div class="formulario__grupo">
+            <label for="Address" class="formulario__label">Disponibles</label>
+            <div class="formulario__grupo-input">
+              <input type="number" class="formulario__input" formControlName="disp" placeholder="Disponibles">
+            </div>
+            
+          </div>
+    
+          
+          <h1 class="is-size-1" style="color: aliceblue;">Subir archivos a Cloud Storage</h1>
+      <p class="download">URL de descarga: <a href="#" target="_blank">Descargar</a></p>
+      <form>
+        <div class="file has-name is-boxed">
+          <label class="file-label">
+            <input type="file" (change)="upload($event)" formControlName="ruta" accept="image/*">            <span class="file-cta">
+              <span class="file-label">
+                Elegir un archivo…
+              </span>
+            </span>
+          
+          </label>
+        </div>
+        <hr>
+      </form>
+    
+                <div class="formulario__grupo" style="margin-bottom: 30px;">
+                    <div class="formulario__grupo-btn-regresar">
+                        <button type="submit" class="formulario__btn" [disabled]="!RegistroFormGrup.valid && !img">Enviar</button>
+                    </div>
+          </div>
+    
+                <div class="formulario__grupo">
+                    <div class="formulario__grupo formulario__grupo-btn-enviar">
+                        <button type="button" (click)="Regresar()"  class="formulario__btn" >Regresar</button>
+                    </div>
+          </div>
+    
+        </form>
+      </main>
+    
+      
+    </div>
+  </div>

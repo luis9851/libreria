@@ -1,0 +1,46 @@
+<!-- <h1 class="animated fadeIn">{{ libro.Titulo | uppercase }} <small>({{ libro.Autor }})</small></h1>
+<hr> -->
+<app-nav-bar ></app-nav-bar> 
+<div class="content" style="margin-top: 56px; position: absolute;width: 100%;">
+    <div class="row animated fadeIn fast fondo_libro">
+        <div class="col-md-4">
+            <img [src]="libro.RutaDeImagen" class="img-fluid" [alt]="libro.Titulo">
+            <br><br>
+            <a (click)="Regreasar()" class="btn btn-outline-danger btn-block">Regresar</a>
+    
+        </div>
+    
+        <div class="col-md-8">
+            <h2 class="animated fadeIn" style="text-align: center;color: black;">{{ libro.Titulo }}</h2>
+            <hr>
+            <p><img src="https://www.gandhi.com.mx/media/wysiwyg/imagenes/detalles/numero_de_paginas.png"> Editorial: {{ libro.Editorial }}</p>
+            <p><img src="https://www.gandhi.com.mx/media/wysiwyg/imagenes/detalles/edicion.png"> Autor(a): {{ libro.Autor }}</p>
+            <p><img src="https://www.gandhi.com.mx/media/wysiwyg/imagenes/detalles/sku.png"> Clave ISBN: {{ libro.Clave }}</p>
+            
+            <form #bookForm="ngForm" (ngSubmit)="EditBook(bookForm)">
+                
+                <input class="form-control mr-sm-2" type="hidden" placeholder="Editar id" name="_id" 
+                #_id="ngModel" [(ngModel)]="libro._id">
+                
+                <p><img src="https://icon-icons.com/icons2/906/PNG/48/invoice_icon-icons.com_70095.png"> 
+                    <input class="form-control mr-sm-2" type="text" placeholder="Editar Precio" name="Precio" 
+                    #Precio="ngModel" [(ngModel)]="libro.Precio">
+                </p>
+                <p><img src="https://www.gandhi.com.mx/media/wysiwyg/imagenes/detalles/formato.png"> 
+                    <input class="form-control mr-sm-2" type="text" placeholder="Editar Unidades" name="UnidadesDisponibles" 
+                    #UnidadesDisponibles="ngModel" [(ngModel)]="libro.UnidadesDisponibles">
+                </p>
+                <div class="container">
+                    <div class="row">
+                        <div class="offset-md-10 col-md-1">
+                            <button id="btnEdit" class="btn btn-warning">Guardar</button>
+                        </div>
+    <!--                     <div class="col-md-1">
+                            <button id="btnCancelar" type="button" class="btn btn-danger" (click)="Cancelar()">Cancelar</button>
+                        </div> -->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
